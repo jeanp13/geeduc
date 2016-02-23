@@ -1,0 +1,52 @@
+<section>
+
+	<h2>Lista de Quartos</h2>
+
+	<!--ALERT CONTROLLER : DO NOT REMOVE-->
+	<div ng-controller="AlertController">
+		<script type="text/ng-template" id="alert.html">
+			<div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+				<div ng-transclude></div>
+			</div>
+		</script>
+
+		<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+	</div>
+	<!--ALERT CONTROLLER : DO NOT REMOVE-->
+
+
+	<nav class="navbar">
+		<a class="btn btn-primary" href="#/room/save" >
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo Quarto
+		</a>
+	</nav>
+
+
+	<!--HOSPITAL-->
+	<div class="form-group">
+		<label for="hospital">Hospital</label>
+		<select name="hospital" id="hospital" ng-model="userHospital" ng-change="changeHospital(userHospital)"
+				ng-options="hospital.name for hospital in hospitals track by hospital.hospitalId">
+		</select>
+	</div>
+
+	<table ng-table="tableParams" show-filter="true" class="table table-bordered table-striped table-condensed" >
+		<tbody>
+			<tr ng-repeat="room in $data" >
+				<td data-title="'#'" filter="{roomId: 'text'}" sortable="'roomId'">{{room.roomId}}</td>
+				<td data-title="'Quarto'" filter="{name: 'text'}" sortable="'name'">{{room.name}}</td>
+				<td data-title="'Tipo'" filter="{roomType: 'text'}" sortable="'roomType'">{{room.roomType.name}}</td>
+				<td data-title="'A&ccedil;&otilde;es'">
+					<div class="btn-toolbar">
+	                    <div class="btn-group">
+	                    	<i class="btn glyphicon glyphicon-pencil" ng-click="updateRoom(room.roomId)" ng-show="room.roomId" title="Delete" data-toggle="modal"></i>
+	                    	<i class="btn glyphicon glyphicon-trash" ng-click="deleteRoom(room, $index)" ng-show="room.roomId" title="Delete" data-toggle="modal"></i>
+	                    </div>
+                	</div>
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>

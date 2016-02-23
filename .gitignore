@@ -1,0 +1,6 @@
+/target/
+/bower_components/
+/node_modules/
+/.idea/
+/.settings/
+application.properties/

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt">
+<head>
+	<title>Hello AngularJS</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+	
+	<!-- include: "type": "css", "files": "**/*.css" -->
+	<link href="/static/angular/ng-table.min.css" rel="stylesheet" type="text/css">
+	<link href="/static/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+	<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+	<link href="/static/css/sb-admin-2.css" rel="stylesheet" type="text/css">
+	<link href="/static/css/timeline.css" rel="stylesheet" type="text/css">
+	<link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!-- /include -->
+	
+	<style type="text/css">
+	[ng\:cloak], [ng-cloak], .ng-cloak, .ng-hide {
+		display: none !important;
+	}
+	</style>
+	
+</head>
+
+<!--   <body ng-app="hello" ng-cloak class="ng-cloak">-->
+<body ng-app="ApplicationModule" ng-controller="ApplicationCtrl">
+
+	<div class="container" ng-controller="LoginCtrl">
+		<ul class="nav nav-pills" role="tablist">
+			<li ng-class="{active:tab('home')}"><a href="#/">home</a></li>
+			<li ng-hide="authenticated()"><a href="#login">login</a></li>
+			<li ng-show="authenticated()"><a href="" ng-click="logout()">logout</a></li>
+		
+			<li ng-show="authenticated()"><a href="#/user">Usu&aacute;rios</a></li>
+			<li ng-show="authenticated()"><a href="#/room">Quartos</a></li>
+
+			<li ng-show="authenticated()"><a href="#/precaution">Precauções</a></li>
+		
+		</ul>
+		<!--  Welcome {{currentUser()}} -->
+	</div>
+	
+	<div ng-view class="container"></div>
+	
+	
+	<!-- include: "type": "js", "files": "**/*.js" -->
+	<script src="/static/jquery/jquery.min.js"></script>
+	<script src="/static/angular/angular.min.js"></script>
+	<script src="/static/angular/angular-animate.min.js"></script>
+	<script src="/static/angular/angular-local-storage.min.js"></script>
+	<script src="/static/angular/angular-messages.min.js"></script>
+	<script src="/static/angular/angular-resource.min.js"></script>
+	<script src="/static/angular/angular-route.min.js"></script>
+	<script src="/static/angular/dirPagination.js"></script>
+	<script src="/static/angular/lodash.compat.min.js"></script>
+	<script src="/static/angular/lodash.min.js"></script>
+	<script src="/static/angular/ng-table.min.js"></script>
+	<script src="/static/angular/ngMask.min.js"></script>
+	<script src="/static/angular/checklist-model.js"></script>
+	<script src="/static/angular/restangular.min.js"></script>
+	<script src="/static/angular/ui-bootstrap.min.js"></script>
+	<script src="/static/angular/ui-bootstrap-tpls.min.js"></script>
+	<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/static/js/script.js"></script>
+
+	<script src="/static/js/hospital-module.js"></script>
+	<script src="/static/js/room-module.js"></script>
+	<script src="/static/js/precaution-module.js"></script>
+	<script src="/static/js/role-module.js"></script>
+	<script src="/static/js/user-module.js"></script>
+	<!-- /include -->
+	
+</body>
+</html>

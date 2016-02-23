@@ -1,0 +1,37 @@
+<section>
+
+	<h2>{{title}}</h2>
+
+	<div ng-controller="AlertController">
+		<script type="text/ng-template" id="alert.html">
+			<div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+				<div ng-transclude></div>
+			</div>
+		</script>
+
+		<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+	</div>
+
+	<form name="form"  novalidate>
+
+		<div class="form-group">
+			<label for="name">Nome</label>
+			<input type="text" id="name" name="name" data-ng-model="precaution.name" class="form-control" placeholder="Nome" required=""/>
+
+			<div class="form-messages" ng-messages="form.name.$error">
+				<p ng-message="required">Campo obrigatório</p>
+			</div>
+
+		</div>
+
+
+		<input  type="text" id="id" name="id" data-ng-model="precaution.precautionId" hidden="true" />
+
+		<button ng-show="precaution.precautionId" type="submit" data-ng-click="update(form.$valid);" class="btn btn-primary">Alterar</button>
+		<button ng-hide="precaution.precautionId" type="submit" data-ng-click="save(form.$valid);" class="btn btn-primary">Adicionar</button>
+		<button type="button" data-ng-click="cancel();" class="btn btn-danger">Cancelar</button>
+
+	</form>
+	
+
+</section>

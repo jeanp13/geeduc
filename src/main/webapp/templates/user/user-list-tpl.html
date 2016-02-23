@@ -1,0 +1,41 @@
+<section>
+
+	<h2>Lista de Usu&aacute;rio</h2>
+
+	<div ng-controller="AlertController">
+		<script type="text/ng-template" id="alert.html">
+			<div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+				<div ng-transclude></div>
+			</div>
+		</script>
+
+		<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+	</div>
+
+	<nav class="navbar">
+		<a class="btn btn-default" href="#/user/save" >
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo Usu&aacute;rio
+		</a>
+	</nav>
+
+
+	<table ng-table="tableParams" show-filter="true" class="table table-bordered table-striped table-condensed" >
+		<tbody>
+			<tr ng-repeat="user in $data" >
+				<td data-title="'User id'" filter="{userId: 'text'}" sortable="'userId'">{{user.userId}}</td>
+				<td data-title="'Username'" filter="{username: 'text'}" sortable="'username'">{{user.username}}</td>
+				<td data-title="'E-mail'" filter="{email: 'text'}" sortable="'email'">{{user.email}}</td>
+				<td data-title="'A&ccedil;&otilde;es'">
+					<div class="btn-toolbar">
+	                    <div class="btn-group">
+	                    	<i class="btn glyphicon glyphicon-pencil" ng-click="updateUser(user.userId)" ng-show="user.userId" title="Delete" data-toggle="modal"></i>
+	                    	<i class="btn glyphicon glyphicon-trash" ng-click="deleteUser(user, $index)" ng-show="user.userId" title="Delete" data-toggle="modal"></i>
+	                    </div>
+                	</div>
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>

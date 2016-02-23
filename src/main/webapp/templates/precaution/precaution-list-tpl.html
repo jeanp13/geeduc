@@ -1,0 +1,40 @@
+<section>
+
+	<h2>Lista de Precauções</h2>
+
+	<div ng-controller="AlertController">
+		<script type="text/ng-template" id="alert.html">
+			<div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+				<div ng-transclude></div>
+			</div>
+		</script>
+
+		<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+	</div>
+
+	<nav class="navbar">
+		<a class="btn btn-default" href="#/precaution/save" >
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo Precaução
+		</a>
+	</nav>
+
+
+	<table ng-table="tableParams" show-filter="true" class="table table-bordered table-striped table-condensed" >
+		<tbody>
+			<tr ng-repeat="precaution in $data" >
+				<td data-title="'Precaution id'" filter="{precautionId: 'text'}" sortable="'precautionId'">{{precaution.precautionId}}</td>
+				<td data-title="'Nome'" filter="{name: 'text'}" sortable="'name'">{{precaution.name}}</td>
+				<td data-title="'A&ccedil;&otilde;es'">
+					<div class="btn-toolbar">
+	                    <div class="btn-group">
+	                    	<i class="btn glyphicon glyphicon-pencil" ng-click="updatePrecaution(precaution.precautionId)" ng-show="precaution.precautionId" title="Update" data-toggle="modal"></i>
+	                    	<i class="btn glyphicon glyphicon-trash" ng-click="deletePrecaution(precaution, $index)" ng-show="precaution.precautionId" title="Delete" data-toggle="modal"></i>
+	                    </div>
+                	</div>
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>

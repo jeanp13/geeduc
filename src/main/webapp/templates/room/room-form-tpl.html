@@ -1,0 +1,54 @@
+<section>
+
+	<h2>{{title}}</h2>
+
+	<!--ALERT CONTROLLER : DO NOT REMOVE-->
+	<div ng-controller="AlertController">
+		<script type="text/ng-template" id="alert.html">
+			<div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+				<div ng-transclude></div>
+			</div>
+		</script>
+
+		<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+	</div>
+	<!--ALERT CONTROLLER : DO NOT REMOVE-->
+
+	<form name="form"  novalidate>
+
+
+		<div class="form-group">
+			<label for="hospital">Hospital</label>
+			<input type="text" id="hospital" name="name" data-ng-model="hospital" class="form-control" placeholder="Nome" disabled/>
+		</div>
+
+		<div class="form-group">
+			<label for="name">Quarto</label>
+			<input type="text" id="name" name="name" data-ng-model="room.name" class="form-control" placeholder="Nome" required=""/>
+
+			<div class="form-messages" ng-messages="form.name.$error">
+				<p ng-message="required">Campo obrigatório</p>
+			</div>
+
+		</div>
+
+		<div class="form-group">
+			<label for="room-type">Tipo</label>
+
+			<select name="room-type" id="room-type" ng-model="room.roomType"
+					ng-options="roomTyoe.name for roomType in roomTypes track by roomType.roomTypeId">
+			</select>
+
+		</div>
+
+
+		<input  type="text" id="userId" name="userId" data-ng-model="room.roomId" hidden="true" />
+
+		<button ng-show="user.userId" type="submit" data-ng-click="update(userForm.$valid);" class="btn btn-primary">Alterar</button>
+		<button ng-hide="user.userId" type="submit" data-ng-click="save(userForm.$valid);" class="btn btn-primary">Adicionar</button>
+		<button type="button" data-ng-click="cancel();" class="btn btn-danger">Cancelar</button>
+
+	</form>
+	
+
+</section>
